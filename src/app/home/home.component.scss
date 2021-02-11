@@ -1,0 +1,24 @@
+.body {
+  background-color: #000000;
+}
+
+.navbar {
+  background-color: #222222;
+  a {
+    color: #99d3b4;
+  }
+}
+
+.header {
+  background-image: url('/assets/background/fondolentes.jpg');
+  background-size: 100%;
+  background-position: center;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

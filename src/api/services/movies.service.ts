@@ -10,7 +10,7 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getMovies = () => {
-    return this.http.get(`${this.BASE_PATH}/list_movies.json`).toPromise()
+    return this.http.get(`${this.BASE_PATH}/list_movies.json?limit=10`).toPromise()
   }
 
 }
