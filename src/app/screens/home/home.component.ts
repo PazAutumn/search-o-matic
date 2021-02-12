@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     })
   }
   toggleModal = (id: number) => {
-    this.modal.toggleModal(this.modal);
+    this.modal.toggleModal();
     this.getMovieDetails(id);
   }
 }
