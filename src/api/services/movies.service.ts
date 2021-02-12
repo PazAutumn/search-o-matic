@@ -10,9 +10,7 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getMovies = (limit: number, page: number) => {
-    const limitQuery = 'limit=' + limit;
-    const pageQuery = 'page=' + page;
-    return this.http.get(`${this.BASE_PATH}/list_movies.json?${limitQuery}&${pageQuery}`).toPromise()
+    return this.http.get(`${this.BASE_PATH}/list_movies.json?limit=${limit}&page=${page}`).toPromise()
   }
 
   getMovieDetails = (id: number) => {

@@ -11,6 +11,15 @@
   .form-control {
     width: 50%;
   }
+  .container-fluid {
+    .navbar-toggler {
+      color: #99d3b4;
+      border-color: #99d3b4;
+    }
+    .navbar-collapse {
+      padding: 10px 0px;
+    }
+  }
 }
 
 .header {
@@ -57,9 +66,14 @@
       border: 1px solid #99d3b4;
     }
   }
+  .col-sm {
+      justify-content: center;
+      display: flex;
+    }
   .card {
     margin: 20px 0;
     background-color: #99d3b4;
+    
     img {
       min-height: 429px;
     }
@@ -131,7 +145,16 @@
     }
   }
 }
-
+@media (max-width: 667px) {
+  .navbar-collapse {
+    .form-control {
+      width: 100% !important;
+    }
+    .btn {
+      width: 100%;
+    }
+  }
+}
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-collapse {
     display: flex!important;
