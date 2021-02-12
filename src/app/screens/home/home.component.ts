@@ -32,24 +32,20 @@ export class HomeComponent implements OnInit {
   getMovies = (limit: number, page: number) => {
     this.isLoading = true;
     this.page = page;
-    console.log(limit, page)
     this.MoviesService.getMovies(limit, page)
     .then((res) => {
       this.isLoading = false;
       this.movies = res;
       this.movies = this.movies.data.movies;
-      console.log(this.movies)
     }).catch((err) => {
       this.isLoading = false;
       this.error = true;
-      console.log(err)
     })
   }
   getMovieDetails = (id: number) => {
     this.modal.isLoading = true;
     this.MoviesService.getMovieDetails(id)
     .then((res) => {
-      console.log(res)
       this.modal.isLoading = false;
       this.movie = res;
       this.movie = this.movie.data.movie;
@@ -57,7 +53,6 @@ export class HomeComponent implements OnInit {
     }).catch((err) => {
       this.isLoading = false;
       this.error = true;
-      console.log(err)
     })
   }
   searchMovies = (keyword:string) => {
@@ -69,13 +64,10 @@ export class HomeComponent implements OnInit {
       this.moviesFound = res;
       this.noResults = this.moviesFound.data.movie_count === 0;
       this.moviesFound = this.moviesFound.data.movies;
-      console.log(res, this.noResults)
     }).catch((err) => {
       this.isLoading = false;
       this.error = true;
-      console.log(err)
     })
-    console.log(keyword)
   }
   toggleModal = (id: number) => {
     this.modal.toggleModal(this.modal);
