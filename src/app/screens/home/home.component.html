@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">Search-o-Matic</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <input (keyup.enter)="searchMovies(searchMovie.value)" class="form-control mr-sm-2" type="search" placeholder="Search by title, genre, year, etc..." aria-label="Search" #searchMovie>
+      <a (click)="searchMovies(searchMovie.value)" class="btn btn-outline-success">Search</a>
+    </div>
+  </div>
+</nav>
+
+<section *ngIf="!error" class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="title">
+          <h1>Learn more about your favorite movies!</h1>
+        </div>        
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="movieList && !error" class="cards">
+  <div class="paginator">
+    <nav aria-label="Search movies result">
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="{'active': isActive && page === 1}"><a class="page-link" (click)="getMovies(15, 1)">1</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 2}"><a class="page-link" (click)="getMovies(15, 2)">2</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 3}"><a class="page-link" (click)="getMovies(15, 3)">3</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 4}"><a class="page-link" (click)="getMovies(15, 4)">4</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 5}"><a class="page-link" (click)="getMovies(15, 5)">5</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div *ngIf="isLoading" class="container">
+    <div class="row">
+      <div class="col-sm">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isLoading" class="container">
+    <div class="row">
+      <div *ngFor="let movie of movies" class="col-sm">
+        <div  class="card" style="width: 18rem;">
+          <img src={{movie.medium_cover_image}} class="card-img-top" alt={{movie.title}}>
+          <div class="card-body">
+            <h5 class="card-title">{{movie.title_long}} </h5>
+            <p class="card-text">{{movie.synopsis !== '' ? movie.synopsis.slice(0, 80) : 'No information'}}...</p>
+          </div>
+          <div class="footer">
+            <a (click)="toggleModal(movie.id)" class="btn">I want to know more!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="paginator">
+    <nav aria-label="Search movies result">
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="{'active': isActive && page === 1}"><a class="page-link" (click)="getMovies(10, 1)">1</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 2}"><a class="page-link" (click)="getMovies(10, 2)">2</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 3}"><a class="page-link" (click)="getMovies(10, 3)">3</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 4}"><a class="page-link" (click)="getMovies(15, 4)">4</a></li>
+        <li class="page-item" [ngClass]="{'active': isActive && page === 5}"><a class="page-link" (click)="getMovies(15, 5)">5</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<section *ngIf="!movieList" class="cards">
+  <div *ngIf="isLoading" class="container">
+    <div class="row">
+      <div class="col-sm">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isLoading && !error && !noResults" class="container">
+    <div class="row">
+      <div *ngFor="let movie of moviesFound" class="col-sm">
+        <div  class="card" style="width: 18rem;">
+          <img src={{movie.medium_cover_image}} class="card-img-top" alt={{movie.title}}>
+          <div class="card-body">
+            <h5 class="card-title">{{movie.title_long}} </h5>
+            <p class="card-text">{{movie.synopsis !== '' ? movie.synopsis.slice(0, 80) : 'No information'}}...</p>
+          </div>
+          <div class="footer">
+            <a (click)="toggleModal(movie.id)" class="btn">I want to know more!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="noResults && !isLoading" class="no-results">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h1>Oops! we didn't find any movie</h1>
+        <h5>Please try again.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="error" class="error">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <img src="/assets/background/not_found_404.png" alt="">
+        <h1>Oops! Something went wrong</h1>
+        <h5>Please reload the page and try again.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-modal #modal></app-modal>
