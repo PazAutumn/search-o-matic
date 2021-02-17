@@ -1,0 +1,163 @@
+.navbar {  
+  background-color: #222222;
+  .navbar-brand {
+    font-family: 'Lobster', cursive;
+    color: #99d3b4;
+  }
+  .btn-outline-success {
+    color: #99d3b4;
+    border-color: #99d3b4;
+  }
+  .form-control {
+    width: 50%;
+  }
+  .container-fluid {
+    .navbar-toggler {
+      color: #99d3b4;
+      border-color: #99d3b4;
+    }
+    .navbar-collapse {
+      padding: 10px 0px;
+    }
+  }
+}
+
+.header {
+  font-family: 'Lobster', cursive;
+  background-image: url('/assets/background/fondolentes.jpg');
+  background-size: 100%;
+  background-position: center;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  color: #99d3b4;
+  .title {
+    h1 {
+      background-color: #222222;
+      border-radius: .5em;
+      line-height: 44px;
+      font-size: 50px;
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.cards {
+  padding: 30px;
+  background-color: #000000;
+  .paginator {
+    display: flex;
+    justify-content: flex-end;
+    a {
+      cursor: pointer;
+    }
+    li.page-item.active .page-link {
+      color: #000;
+      background-color: #99d3b4;
+      border-color: #99d3b4;
+    }
+    .page-link {
+      color: #99d3b4;
+      background-color: #000;
+      border: 1px solid #99d3b4;
+    }
+  }
+  .col-sm {
+      justify-content: center;
+      display: flex;
+    }
+  .card {
+    margin: 20px 0;
+    background-color: #99d3b4;
+    
+    img {
+      min-height: 429px;
+    }
+    .card-img-top {
+      height: 100%;
+    }
+    .card-title {
+      min-height: 50px;
+      font-weight: 600;
+    }
+    .card-body {
+      min-height: 184px;
+    }
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      .btn {
+        background-color: #222222;
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      height: 200px;
+    }
+    h1 {
+      font-family: 'Lobster', cursive;
+      color: #99d3b4;
+      text-align: center;
+      padding: 20px 0;
+    }
+    h5 {
+      color: #99d3b4;
+      text-align: center;
+    }
+  }
+}
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-family: 'Lobster', cursive;
+      color: #99d3b4;
+      text-align: center;
+      padding: 20px 0;
+    }
+    h5 {
+      color: #99d3b4;
+      text-align: center;
+    }
+  }
+}
+@media (max-width: 667px) {
+  .navbar-collapse {
+    .form-control {
+      width: 100% !important;
+    }
+    .btn {
+      width: 100%;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    justify-content: flex-end;
+  }
+}
